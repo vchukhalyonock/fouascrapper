@@ -3,8 +3,8 @@
 namespace App\Interfaces;
 
 interface IHttp {
-    const METHOD_GET = 1;
-    const METHOD_POST = 1;
+    const METHOD_GET = 'get';
+    const METHOD_POST = 'post';
 
-    static public function request($url, $method = self::METHOD_GET, array $params = array());
+    public function request($url, $method = self::METHOD_GET, array $params = array());
 }

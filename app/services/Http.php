@@ -6,7 +6,13 @@ use App\Interfaces\IHttp;
 
 class Http implements IHttp {
 
-    static public function request($url, $method = self::METHOD_GET, array $params = array()) {
-        // TODO: Implement request() method.
+    private $_curl;
+
+    public function __construct() {
+        $this->_curl = Curl::getInstance();
+    }
+
+    public function request($url, $method = self::METHOD_GET, array $params = array()) {
+        return $this->_curl->$method($url, $params);
     }
 }
