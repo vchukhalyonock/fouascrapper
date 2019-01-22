@@ -17,7 +17,7 @@ class App {
 
     public function login() {
         $auth = new Auth();
-        $resource = $auth->login($this->login, $this->_password);
+        $resource = $auth->login($this->_login, $this->_password);
         var_dump($resource->response);
     }
 }
