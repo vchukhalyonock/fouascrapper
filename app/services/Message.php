@@ -7,28 +7,30 @@ use App\Interfaces\IMessage;
 class Message implements IMessage {
 
     private $_message;
+    static private $_title = null;
 
-    public function __construct($messageText) {
-        $this->_message = $messageText;
+    public function __construct($message) {
+        $this->_message = $message;
     }
 
-    public function getDate()
-    {
-        // TODO: Implement getDate() method.
+    public function getDate() {
+        return trim($this->_message->find('.date')->text());
     }
 
     public function getAuthor()
     {
-        // TODO: Implement getAuthor() method.
+        return trim($this->_message->find('.username.offline.popupctrl')->text());
     }
 
     public function getText()
     {
-        // TODO: Implement getText() method.
+        return trim($this->_message->find('.postcontent.restore')->text());
     }
 
     public function getTitle()
     {
-        // TODO: Implement getTitle() method.
+        if(is_null(self::$_title))
+            self::$_title = trim($this->_message->find('.title.icon')->text());
+        return self::$_title;
     }
 }

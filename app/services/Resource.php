@@ -30,7 +30,7 @@ class Resource implements IResource {
         \phpQuery::newDocumentHTML($this->_response);
         $postsElements = pq('.posts > li');
         $postsElements->each(function ($item) {
-            $this->_messages[] = new Message($item->nodeValue);
+            $this->_messages[] = new Message(pq($item));
         });
         return $this->_messages;
     }
