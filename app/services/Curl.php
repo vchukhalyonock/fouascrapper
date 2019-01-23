@@ -4,13 +4,26 @@ namespace App\Services;
 
 use App\Interfaces\ICurl;
 
+/**
+ * Class Curl
+ * @package App\Services
+ */
 class Curl implements ICurl {
 
+    /**
+     * @var null
+     */
     static public $_curl = null;
 
+    /**
+     * Curl constructor.
+     */
     private function __construct(){
     }
 
+    /**
+     * @return \Curl\Curl|null
+     */
     static public function getInstance() {
         if(is_null(self::$_curl)) {
             self::$_curl = new \Curl\Curl();

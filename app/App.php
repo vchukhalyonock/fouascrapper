@@ -4,11 +4,25 @@ namespace App;
 
 use App\Services\Resource;
 
+/**
+ * Class App
+ * @package App
+ */
 class App {
 
+    /**
+     * @var Resource
+     */
     private $_resource;
+
+    /**
+     * @var array
+     */
     private $_messages = [];
 
+    /**
+     * App constructor.
+     */
     public function __construct() {
         $this->_resource = new Resource(getenv('LOGIN'), getenv('PASSWORD'));
         $this->_resource->getPage(getenv('THEME'));
@@ -16,6 +30,9 @@ class App {
         $this->_parseAndSave();
     }
 
+    /**
+     * 
+     */
     private function _parseAndSave() {
         foreach ($this->_messages as $message) {
             $title = $message->getTitle();
