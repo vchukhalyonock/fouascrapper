@@ -11,6 +11,8 @@ class App {
 
     public function __construct() {
         $this->_resource = new Resource(getenv('LOGIN'), getenv('PASSWORD'));
-        $this->_page = $this->_resource->getPage(getenv('THEME'));
+        $this->_resource->getPage(getenv('THEME'));
+        $messages = $this->_resource->getMessages();
+        
     }
 }

@@ -9,6 +9,7 @@ class Resource implements IResource {
 
     private $_http;
     private $_response;
+    private $_messages = [];
 
     public function __construct($login, $password) {
         $this->_http = new Http();
@@ -26,6 +27,11 @@ class Resource implements IResource {
     }
 
     public function getMessages() {
-
+        \phpQuery::newDocumentHTML($this->_response);
+        $postsElements = pq('.posts > li');
+        $postsElements->each(function ($item) {
+            $this->_messages[] = new Message($item->nodeValue);
+        });
+        return $this->_messages;
     }
 }
