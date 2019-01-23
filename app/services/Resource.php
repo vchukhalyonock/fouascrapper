@@ -8,6 +8,7 @@ use App\Interfaces\IResource;
 class Resource implements IResource {
 
     private $_http;
+    private $_response;
 
     public function __construct($login, $password) {
         $this->_http = new Http();
@@ -21,6 +22,10 @@ class Resource implements IResource {
             IHttp::METHOD_GET
         );
 
-        return $themeResource->response;
+        $this->_response = $themeResource->response;
+    }
+
+    public function getMessages() {
+
     }
 }
