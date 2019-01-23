@@ -8,5 +8,3 @@ $dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
 
 $app = new \App\App();
-
-$app->login();

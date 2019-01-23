@@ -2,22 +2,15 @@
 
 namespace App;
 
-use App\Services\Auth;
+use App\Services\Resource;
 
 class App {
 
-
-    private $_login;
-    private $_password;
+    private $_resource;
+    private $_page;
 
     public function __construct() {
-        $this->_login = getenv('LOGIN');
-        $this->_password = getenv('PASSWORD');
-    }
-
-    public function login() {
-        $auth = new Auth();
-        $resource = $auth->login($this->_login, $this->_password);
-        var_dump($resource->response);
+        $this->_resource = new Resource(getenv('LOGIN'), getenv('PASSWORD'));
+        $this->_page = $this->_resource->getPage(getenv('THEME'));
     }
 }

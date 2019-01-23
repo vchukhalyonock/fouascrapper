@@ -10,8 +10,8 @@ class Auth implements IAuth {
     private $_http;
     private $_loginScript;
 
-    public function __construct() {
-        $this->_http = new Http();
+    public function __construct(Http $http) {
+        $this->_http = $http;
         $this->_loginScript = getenv('LOGIN_SCRIPT');
     }
 
@@ -21,7 +21,8 @@ class Auth implements IAuth {
             IHttp::METHOD_POST,
             [
                 'login' => $login,
-                'password' => $password
+                'password' => $password,
+                'do' => 'login'
             ]
         );
     }
